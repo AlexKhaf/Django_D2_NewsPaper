@@ -3,14 +3,33 @@
 
 <!-- Название у нас будет proudcts -->
 {% block title %}
-News
+<h1>News {{news|length}} </h1>
 {% endblock title %}
+
+{% block top %}
+Новостей всего: {{news|length}}
+{% endblock top %}
+
 
 <!-- В контенте на странице мы выводим сам товар, айди которого было передано в адрес -->
 {% block content %}
+    {% if news %}
+        <table>
+            <tr>
+                <td>Заголовок</td>
+                <td>Дата публикации</td>
+                <td>Текст статьи</td>
+            </tr>
+            {% for n in news %}
+            <tr>
+                <td> {{ n.topic }} </td>
+                <td> {{ n.date|date:'d M Y' }} </td>
+                <td> {{ n.contents|truncatechars:20 }} </td>
+           </tr>
+            {% endfor %}
 
-    {% for n in news %}
-        {{ n.topic }} <br>
-    {% endfor %}
-
+        </table>
+    {% else %}
+    <h3>Новостей нет!</h3>
+    {% endif %}
 {% endblock content %}
