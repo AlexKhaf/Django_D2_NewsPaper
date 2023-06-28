@@ -1,13 +1,14 @@
 <!--  наследуемся от шаблона default.html, который мы создавали ещё во времена flatpages -->
 {% extends 'flatpages/default.html' %}
+{% load custom_filters %} <!-- не забываем заранее загружать наши фильтры! -->
 
 <!-- Название у нас будет proudcts -->
 {% block title %}
-<h1>News {{news|length}} </h1>
+<h1>News</h1>
 {% endblock title %}
 
 {% block top %}
-Новостей всего: {{news|length}}
+Публикаций всего: {{ news|length }}
 {% endblock top %}
 
 
@@ -20,11 +21,16 @@
                 <td>Дата публикации</td>
                 <td>Текст статьи</td>
             </tr>
+
             {% for n in news %}
             <tr>
-                <td> {{ n.topic }} </td>
+                <td> {{ n.topic|censor:1 }} </td>
                 <td> {{ n.date|date:'d M Y' }} </td>
-                <td> {{ n.contents|truncatechars:20 }} </td>
+                    {% if n.category == "AR" %}
+                    <td> {{ n.contents|truncatechars:50|censor:1 }} </td>
+                    {% elif n.category == "NE" %}
+                    <td> {{ n.contents|censor:1 }} </td>
+                    {% endif %}
            </tr>
             {% endfor %}
 
