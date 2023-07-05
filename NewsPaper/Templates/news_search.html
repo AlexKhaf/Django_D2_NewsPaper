@@ -14,6 +14,11 @@
 
 <!-- В контенте на странице мы выводим сам товар, айди которого было передано в адрес -->
 {% block content %}
+<!-- Перед таблицей добавим форму для поиска -->
+<form method="GET">
+    {{ filter.form }} <!-- Форму от фильтров за нас сделает Django. А вот кнопку, увы, придётся делать самому -->
+    <input type="submit" value="Найти">
+</form>
 
     {% if news %}
         <table>
@@ -23,7 +28,7 @@
                 <td>Текст статьи</td>
             </tr>
 
-            {% for n in news %}
+            {% for n in filter.qs %}
             <tr>
                 <td> {{ n.topic|censor:1 }} </td>
                 <td> {{ n.date|date:'d M Y' }} </td>

@@ -8,6 +8,9 @@ class Author(models.Model):
     authorUser = models.OneToOneField(User, on_delete=models.CASCADE)
     authorRating = models.SmallIntegerField(default=0)
 
+    def __str__(self):
+        return f'{self.authorUser.username}'
+
     def update_rating(self):
         # Count author's  sum rating of all his articles (instance Author)
         if self.post_set.filter(category="AR").exists():
@@ -51,6 +54,9 @@ class Post(models.Model):
     topic = models.CharField(max_length=64)
     contents = models.TextField()
     rating = models.SmallIntegerField(default=0)
+
+    # def __str__(self):
+    #     return f'{self.postAuthor.authorUser.username}'
 
     def like(self):
         self.rating += 1
