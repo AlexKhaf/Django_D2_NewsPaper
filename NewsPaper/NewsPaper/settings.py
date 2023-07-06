@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     'fpages',
     'news',
+    "search",
 ]
 
 SITE_ID = 1

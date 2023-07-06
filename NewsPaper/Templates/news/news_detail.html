@@ -1,0 +1,39 @@
+<!--  наследуемся от шаблона default.html, который мы создавали ещё во времена flatpages -->
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %} <!-- не забываем заранее загружать наши фильтры! -->
+
+
+{% block title %}
+One news:
+{% endblock title %}
+
+
+{% block content %}
+{% if one_news %}
+        <table>
+            <tr>
+<!--                <td>Автор</td>-->
+                <td>Заголовок</td>
+                <td>Текст статьи</td>
+                <td>Дата публикации</td>
+<!--                <td>Тип (статья/новость)</td>-->
+<!--                <td>Тематика</td>-->
+<!--                <td>Рейтинг</td>-->
+            </tr>
+            <tr>
+<!--                <td> {{ one_news.postAuthor.authorUser.username }} </td>-->
+                <td> {{ one_news.topic|censor:1 }} </td>
+                <td> {{ one_news.contents|censor:1  }} </td>
+                <td> {{ one_news.date|date:'d-M-y H:i' }} </td>
+<!--                <td> {{ one_news.category }} </td>-->
+<!--                <td> {{ one_news.postcategory }} </td>-->
+<!--                <td> {{ one_news.rating }} </td>-->
+           </tr>
+        </table>
+    {% else %}
+    <h3>Новости с номером {{ one_news.id }} нет!</h3>
+    {% endif %}
+<hr>
+<a href="{% url 'news_home' %}"><u> Вернуться к news/ </u></a>
+
+{% endblock content %}

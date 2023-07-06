@@ -3,8 +3,10 @@
 /NewsPaper/news/__pycache__/
 /NewsPaper/news/migrations/__pycache__/
 /NewsPaper/fpages/__pycache__/
-NewsPaper/news/templatetags/__pycache__/
-NewsPaper/search/__pycache__/
+/NewsPaper/news/templatetags/__pycache__/
+/NewsPaper/search/__pycache__/
+/search/migrations/__pycache__/
+
 
 
 

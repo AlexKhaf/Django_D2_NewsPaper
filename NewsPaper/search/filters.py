@@ -1,17 +1,19 @@
-from django_filters import FilterSet  # импортируем filterset, чем-то напоминающий знакомые дженерики
+from django_filters import FilterSet, CharFilter  # импортируем filterset, чем-то напоминающий знакомые дженерики
 from news.models import Post
 
 
 # создаём фильтр
 class PostFilter(FilterSet):
-    # Здесь в мета классе надо предоставить модель и указать поля, по которым будет фильтроваться (т.е. подбираться) информация о товарах
+    # topic = CharFilter(label='Тема')
+    # postAuthor__authorUser__username = CharFilter(label='Имя автора')
+    # date = CharFilter(label='Дата')
     class Meta:
         model = Post
-        # fields = ('name', 'price', 'quantity',
-        #           'category')  # поля, которые мы будем фильтровать (т.е. отбирать по каким-то критериям, имена берутся из моделей)
+
+        # fields = ('postAuthor__authorUser__username', 'date')
+
         fields = {
-            'topic': ['icontains'],
-            'postAuthor__authorUser__username': ['icontains'],
-            # 'postAuthor': ['icontains'],
-            'date': ['gt'],
-        }
+                    # 'topic': ['icontains'],
+                    'postAuthor__authorUser__username': ['icontains'],
+                    'date': ['gt'],
+                }

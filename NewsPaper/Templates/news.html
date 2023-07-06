@@ -18,14 +18,24 @@
     {% if news %}
         <table>
             <tr>
-                <td>Заголовок</td>
+                <td>
+                    Заголовок
+
+                </td>
                 <td>Дата публикации</td>
                 <td>Текст статьи</td>
             </tr>
 
             {% for n in news %}
             <tr>
-                <td> {{ n.topic|censor:1 }} </td>
+                <td>
+                    <a href="{% url 'news_detail' n.id %}">{{ n.topic|title }}</a>
+<!--                     При нажатии на имя товара в таблице нас теперь будет перекидывать на страницу с информацией о товаре-->
+                    <a href="{% url 'news_update' n.id %}"><u>Редактировать</u></a>
+                    <!-- добавим ссылку на редактирование товара-->
+                    <a href="{% url 'news_delete' n.id %}"><u> Удалить </u></a>
+                    <!-- добавим ссылку на удаление товара-->
+                </td>
                 <td> {{ n.date|date:'d M Y' }} </td>
                     {% if n.category == "AR" %}
                     <td> {{ n.contents|truncatechars:50|censor:1 }} </td>
@@ -39,6 +49,8 @@
     {% else %}
     <h3>Новостей нет!</h3>
     {% endif %}
+<hr>
+<a href="{% url 'news_create' %}">Добавить новость</a> <br>
 
 <!-- Проверяем что поддерживается постраничный вывод -->
 {% if is_paginated %}
