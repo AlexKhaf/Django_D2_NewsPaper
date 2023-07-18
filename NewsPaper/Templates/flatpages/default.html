@@ -16,7 +16,22 @@
          Navigation
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <div class="container px-4">
-                <a class="navbar-brand" href="#page-top">Вернуться вверх</a>
+
+                {% if request.user.is_authenticated %}
+                   <a class="navbar-brand" href="/news/logout/">Вы зарегистрированы как {{ request.user }}. / <u class="btn btn-info">Выйти?</u></a>
+
+                {% if is_not_authors %}
+                    <a class="btn btn-info" href="/news/upgrade/">Хочу в группу авторов!</a>
+                {% else %}
+
+                    <a class="btn btn-info" href="/news/downgrade/">Выйти из группы авторов!</a>
+                {% endif %}
+
+                {% else %}
+                <a class="navbar-brand" href="/accounts/login/">Вход в систему не произведен. / <u class="btn btn-info">Войти?</u></a>
+                {% endif %}
+
+
 <!--                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
 <!--                <div class="collapse navbar-collapse" id="navbarResponsive">-->
 <!--                    <ul class="navbar-nav ms-auto">-->
@@ -32,7 +47,12 @@
             <div class="container px-4 text-center">
 
                 <p class="lead"> </p>
-                <br>
+
+                {% if not is_not_authors %}
+                <h3> Вы в группе "Authors"</h3>
+                {% endif %}
+
+                <hr>
                 <h1 class="fw-bolder">{% block top %} {% endblock top %}</h1>
 
 

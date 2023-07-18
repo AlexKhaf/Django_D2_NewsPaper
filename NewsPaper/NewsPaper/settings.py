@@ -17,6 +17,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/news/'
+LOGOUT_REDIRECT_URL = '/news/'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -26,8 +30,10 @@ SECRET_KEY = 'django-insecure-t28l8_1k-ju2frvt8(kr3e8%a#7ltldqnq@h)9ie1t(+cay0j$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
+SITE_ID = 1
 
 # Application definition
 
@@ -43,12 +49,25 @@ INSTALLED_APPS = [
     "django.contrib.flatpages",
     "django_filters",
 
+    #########
+    # 3rd party apps
+    #########
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # ... здесь нужно указать провайдеры, которые планируете использовать
+    'allauth.socialaccount.providers.google',
+
+    #########
+    # User apps
+    #########
     'fpages',
     'news',
     "search",
 ]
 
-SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -73,6 +92,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                # `allauth` needs this from django
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -80,6 +100,21 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_FORMS = {'signup': 'news.forms.BasicSignupForm'}
 
 WSGI_APPLICATION = 'NewsPaper.wsgi.application'
 
