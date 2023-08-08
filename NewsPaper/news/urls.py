@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import NewsList, NewsDetail, NewsCreateView, NewsDeleteView, \
-    NewsUpdateView, LogoutView, upgrade_me, downgrade_me
+    NewsUpdateView, LogoutView, upgrade_me, downgrade_me, CategoryDetail, \
+    subscribe, unsubscribe
 
 # app_name = 'news'
 
@@ -13,5 +14,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('upgrade/', upgrade_me, name = 'upgrade'),
     path('downgrade/', downgrade_me, name = 'downgrade'),
+    path('category/<int:pk>/', CategoryDetail.as_view(), name='category'),
+    path('subscribe/<int:pk>/', subscribe, name = 'subscribe'),
+    path('unsubscribe/<int:pk>/', unsubscribe, name = 'unsubscribe'),
 
 ]

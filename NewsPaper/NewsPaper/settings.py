@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    "django_apscheduler",
+
 
     # ... здесь нужно указать провайдеры, которые планируете использовать
     'allauth.socialaccount.providers.google',
@@ -63,10 +65,16 @@ INSTALLED_APPS = [
     # User apps
     #########
     'fpages',
-    'news',
+    'news.apps.NewsConfig',
     "search",
 ]
 
+# формат даты, которую будет воспринимать наш задачник(вспоминаем урок по фильтрам)
+APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
+
+# если задача не выполняется за 25 секунд, то она автоматически снимается,
+# можете поставить время побольше, но как правило, это сильно бьёт по производительности сервера
+APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
 
 
 MIDDLEWARE = [
@@ -111,10 +119,18 @@ AUTHENTICATION_BACKENDS = [
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_FORMS = {'signup': 'news.forms.BasicSignupForm'}
+
+EMAIL_HOST = 'smtp.yandex.ru' # адрес сервера Яндекс-почты для всех один и тот же
+EMAIL_PORT = 465 # порт smtp сервера тоже одинаковый
+EMAIL_HOST_USER = 'alexander.hafisov' # ваше имя пользователя, например если ваша почта user@yandex.ru, то сюда надо писать user, иными словами, это всё то что идёт до собаки
+EMAIL_HOST_PASSWORD = 'jqtqxdodwzpjzeli' # пароль от почты
+EMAIL_USE_SSL = True # Яндекс использует ssl, подробнее о том, что это, почитайте на Википедии, но включать его здесь обязательно
+
+DEFAULT_FROM_EMAIL = 'alexander.hafisov@yandex.ru'
 
 WSGI_APPLICATION = 'NewsPaper.wsgi.application'
 
@@ -158,7 +174,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

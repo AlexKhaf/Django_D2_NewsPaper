@@ -22,6 +22,7 @@
                     Заголовок
 
                 </td>
+                <td>Разделы</td>
                 <td>Дата публикации</td>
                 <td>Текст статьи</td>
             </tr>
@@ -36,6 +37,12 @@
                     <a href="{% url 'news_delete' n.id %}"><u> Удалить </u></a>
                     <!-- добавим ссылку на удаление товара-->
                 </td>
+                <td>
+                    {% for cat in n.postCategory.all %}
+                    <a href="{% url 'category' cat.id %}"> {{ cat }} </a>
+                    {% endfor %}
+                </td>
+
                 <td> {{ n.date|date:'d M Y' }} </td>
                     {% if n.category == "AR" %}
                     <td> {{ n.contents|truncatechars:50|censor:1 }} </td>

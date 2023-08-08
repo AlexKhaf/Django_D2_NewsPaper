@@ -14,6 +14,7 @@ One news:
             <tr>
 <!--                <td>Автор</td>-->
                 <td>Заголовок</td>
+                <td>Разделы</td>
                 <td>Текст статьи</td>
                 <td>Дата публикации</td>
 <!--                <td>Тип (статья/новость)</td>-->
@@ -23,6 +24,11 @@ One news:
             <tr>
 <!--                <td> {{ one_news.postAuthor.authorUser.username }} </td>-->
                 <td> {{ one_news.topic|censor:1 }} </td>
+                 <td>
+                    {% for category in one_news.postCategory.all %}
+                    <a href=""> {{ category }} </a>
+                    {% endfor %}
+                </td>
                 <td> {{ one_news.contents|censor:1  }} </td>
                 <td> {{ one_news.date|date:'d-M-y H:i' }} </td>
 <!--                <td> {{ one_news.category }} </td>-->

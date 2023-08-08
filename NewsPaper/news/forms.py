@@ -1,12 +1,12 @@
 from django.forms import ModelForm
-from .models import Post
+from .models import Post, Category
 from django.contrib.auth.models import User, Group
 from allauth.account.forms import SignupForm
 
 class NewsForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['category', 'topic','postAuthor', 'category', "contents"]
+        fields = ['category', "postCategory" , 'topic','postAuthor', "contents"]
 
 class BasicSignupForm(SignupForm):
     def save(self, request):

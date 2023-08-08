@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    Тематика: {{ category.theme }}
+
+    {% if user not in subscribers %}
+    <p> Пользователь {{ user.username }} вы не подписаны на {{ category.theme }}! </p>
+    <form action = '{% url 'subscribe' category.pk %}' method="post">
+        {% csrf_token %}
+    <input type = "Submit" value="Подписаться" />
+    </form>
+    {% else %}
+    <p> Пользователь {{ user.username }} вы подписаны на {{ category.theme }}! </p>
+    <form action = '{% url 'unsubscribe' category.pk %}' method="post">
+        {% csrf_token %}
+    <input type = "Submit" value="Отписаться" />
+    </form>
+    {% endif %}
+    <hr>
+    <p> Подписка активна у пользователей: </p>
+    {% for user in subscribers %}
+    {{ user.username }}
+    <br>
+    {% endfor %}
+    <hr>
+<a href="http://127.0.0.1:8000/news/">Вернуться в списку новостей</a>
+</head>
+<body>
+
+</body>
+</html>

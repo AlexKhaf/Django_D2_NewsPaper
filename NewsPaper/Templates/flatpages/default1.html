@@ -5,6 +5,16 @@
     <title>Default</title>
 </head>
 <body>
+{{post.category}}
+{{post.topic}}
+{{post.contents}}
+{{post.postAuthor}}
+
+
+{% for cat in post.postCategory.all %}
+ {{ cat }}
+{% endfor %}
+
 
 </body>
 </html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% load account %} <!-- Загружаем тег который позволит получить нам ссылку на подтверждение -->
+    <h1> {{ user.username }} благодарим Вас за регистрацию на проекте "NewsPaper"!</h1>
+    <h3>Для активации вашей учетной записи пройдите по ссылке: <a href="{{ activate_url }}">the link</a></h3>
+     <!-- Всставляем ссылку на активацию -->
+</body>
+</html>

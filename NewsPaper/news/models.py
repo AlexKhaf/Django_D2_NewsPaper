@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-# from datetime import datetime
+from datetime import datetime
 from django.db.models import Sum
 
 # Create your models here.
@@ -39,8 +39,16 @@ class Author(models.Model):
 
 class Category(models.Model):
     theme = models.CharField(max_length=64, unique=True)
+    subscriber = models.ManyToManyField(User, through="CategoryUser")
+
+    def __str__(self):
+        return f'{self.theme}'
+class CategoryUser(models.Model):
+    categoryThrough = models.ForeignKey(Category, on_delete=models.CASCADE)
+    userThrough = models.ForeignKey(User, on_delete=models.CASCADE)
+
 class Post(models.Model):
-    postAuthor = models.ForeignKey(Author, on_delete=models.CASCADE)
+    postAuthor = models.ForeignKey(Author, on_delete=models.CASCADE, verbose_name='Автор')
 
     ARTICLE = "AR"
     NEWS = "NE"
@@ -48,15 +56,15 @@ class Post(models.Model):
         (ARTICLE, 'статья'),
         (NEWS, 'новость')
     )
-    category = models.CharField(max_length=2, choices=post_type, default=NEWS)
+    category = models.CharField(max_length=2, choices=post_type, default=NEWS, verbose_name='Категория')
     date = models.DateTimeField(auto_now_add=True)
-    postCategory = models.ManyToManyField(Category, through="PostCategory")
-    topic = models.CharField(max_length=64)
-    contents = models.TextField()
+    postCategory = models.ManyToManyField(Category, through="PostCategory", verbose_name='Разделы')
+    topic = models.CharField(max_length=64,  verbose_name='Тема')
+    contents = models.TextField(verbose_name='Содержание')
     rating = models.SmallIntegerField(default=0)
 
-    # def __str__(self):
-    #     return f'{self.postAuthor.authorUser.username}'
+    def __str__(self):
+        return f'на тему "{self.topic}"'
 
     def get_absolute_url(self):
         # добавим абсолютный путь, чтобы после создания нас перебрасывало на страницу с товаром
@@ -81,6 +89,9 @@ class Comment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     text = models.TextField()
     rating = models.SmallIntegerField(default=0)
+
+    def __str__(self):
+        return f'От пользователя {self.commentUser.username} на тему "{self.commentPost.topic}"'
 
     def like(self):
         self.rating += 1

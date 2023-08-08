@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Здравствуй, {{ user }}. Подборка новостей за неделю в твоём любимом разделе(ax)! </h2>
+    <hr>
+
+    {% for post in posts %}
+        {% if post.id in postlist_unique_id %}
+            <p> Тема: {{ post.topic }} </p>
+            <p> Содержание: {{ post.contents|truncatechars:50 }} </p>
+            <p> Ссылка на полный текст статьи:<a href="http://127.0.0.1:8000/news/{{ post.id }}/">здесь</a></p>
+            <hr>
+        {% endif %}
+    {% endfor %}
+
+</body>
+</html>
