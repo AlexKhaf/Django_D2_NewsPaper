@@ -11,6 +11,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from datetime import datetime, timedelta
+from django.views.decorators.cache import cache_page
+from django.core.cache import cache
+
 
 @login_required
 def upgrade_me(request):
@@ -127,6 +130,18 @@ class NewsDetail(LoginRequiredMixin, DetailView):
         context = super().get_context_data(**kwargs)
         context['is_not_authors'] = not self.request.user.groups.filter(name='authors').exists()
         return context
+
+    def get_object(self, *args, **kwargs):  # переопределяем метод получения объекта, как ни странно
+        obj = cache.get(f'post-{self.kwargs["pk"]}', None)
+        # кэш очень похож на словарь, и метод get действует также.
+        # Он забирает значение по ключу, если его нет, то забирает None.
+
+        # если объекта нет в кэше, то получаем его и записываем в кэш
+        if not obj:
+            obj = super().get_object(queryset=self.queryset)
+            cache.set(f'post-{self.kwargs["pk"]}', obj)
+
+        return obj
 
 # дженерик для создания объекта. Надо указать только имя шаблона и класс формы который мы написали в прошлом юните. Остальное он сделает за вас
 class NewsCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):

@@ -6,6 +6,9 @@
 /NewsPaper/news/templatetags/__pycache__/
 /NewsPaper/search/__pycache__/
 /search/migrations/__pycache__/
+/NewsPaper/cache_files/
+/NewsPaper/news/management/commands/__pycache__/
+
 
 
 

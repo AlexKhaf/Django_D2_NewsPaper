@@ -11,6 +11,10 @@ class Author(models.Model):
     def __str__(self):
         return f'{self.authorUser.username}'
 
+    @property
+    def above_zero_rating(self):
+        return self.authorRating > 0
+
     def update_rating(self):
         # Count author's  sum rating of all his articles (instance Author)
         if self.post_set.filter(category="AR").exists():
@@ -69,6 +73,10 @@ class Post(models.Model):
     def get_absolute_url(self):
         # добавим абсолютный путь, чтобы после создания нас перебрасывало на страницу с товаром
         return f'/news/{self.id}'
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs) # сначала вызываем метод родителя, чтобы объект сохранился
+        cache.delete(f'post-{self.pk}') # затем удаляем его из кэша, чтобы сбросить его
 
     def like(self):
         self.rating += 1

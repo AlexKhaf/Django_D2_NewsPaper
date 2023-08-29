@@ -26,7 +26,7 @@ One news:
                 <td> {{ one_news.topic|censor:1 }} </td>
                  <td>
                     {% for category in one_news.postCategory.all %}
-                    <a href=""> {{ category }} </a>
+                    <a href="{% url 'category' category.id %}"> {{ category }} </a>
                     {% endfor %}
                 </td>
                 <td> {{ one_news.contents|censor:1  }} </td>

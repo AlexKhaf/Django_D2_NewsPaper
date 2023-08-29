@@ -23,4 +23,5 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('search/', include('search.urls')),
     path('accounts/', include('allauth.urls')),
+    # path('', include('allauth.urls')),
 ]
