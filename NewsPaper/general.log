@@ -1,0 +1,76 @@
+2023-09-05 10:49:40,673 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 10:50:23,144 INFO basehttp "GET /news/downgrade/ HTTP/1.1" 302 0
+2023-09-05 10:50:23,199 INFO basehttp "GET /news/ HTTP/1.1" 200 15022
+2023-09-05 10:50:25,104 INFO basehttp "GET /news/upgrade/ HTTP/1.1" 302 0
+2023-09-05 10:50:25,144 INFO basehttp "GET /news/ HTTP/1.1" 200 15103
+2023-09-05 10:51:00,401 INFO basehttp "GET /news/150/ HTTP/1.1" 200 7297
+2023-09-05 10:51:03,107 INFO basehttp "GET /news/category/3/ HTTP/1.1" 200 723
+2023-09-05 10:51:05,325 INFO basehttp "POST /news/unsubscribe/3/ HTTP/1.1" 302 0
+2023-09-05 10:51:05,352 INFO basehttp "GET /news/category/3/ HTTP/1.1" 200 704
+2023-09-05 10:51:09,107 INFO basehttp "POST /news/subscribe/3/ HTTP/1.1" 302 0
+2023-09-05 10:51:09,127 INFO basehttp "GET /news/category/3/ HTTP/1.1" 200 723
+2023-09-05 10:51:14,549 WARNING log Not Found: /
+2023-09-05 10:51:14,550 WARNING basehttp "GET / HTTP/1.1" 404 2489
+2023-09-05 10:51:26,401 INFO basehttp "GET /news/ HTTP/1.1" 200 15103
+2023-09-05 10:55:34,642 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 10:55:36,735 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 10:58:18,990 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 10:58:20,973 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:00:08,454 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:00:10,182 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:00:43,723 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:00:45,211 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:01:00,874 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:01:02,179 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:01:15,666 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:01:17,001 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:01:35,985 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\news\views.py changed, reloading.
+2023-09-05 11:01:38,133 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:01:40,107 INFO basehttp "GET /news/downgrade/ HTTP/1.1" 302 0
+2023-09-05 11:01:40,164 INFO basehttp "GET /news/ HTTP/1.1" 200 15022
+2023-09-05 11:01:42,429 ERROR log Internal Server Error: /news/upgrade/
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\newspaper\news\views.py", line 39, in upgrade_me
+    boom = 1 / 0
+ZeroDivisionError: division by zero
+2023-09-05 11:01:42,430 ERROR basehttp "GET /news/upgrade/ HTTP/1.1" 500 75221
+2023-09-05 11:03:17,812 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:03:19,179 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:03:28,519 ERROR basehttp "GET /news/upgrade/ HTTP/1.1" 500 75254
+2023-09-05 11:05:41,203 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\news\views.py changed, reloading.
+2023-09-05 11:05:43,011 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:07:13,925 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:07:15,924 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:07:38,212 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:07:40,096 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:07:52,697 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:07:54,133 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:20:50,907 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:20:52,534 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:21:09,258 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:21:11,138 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:22:07,373 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:22:09,297 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:24:28,084 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:24:29,839 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:24:51,465 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:24:52,998 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:28:17,003 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:28:18,443 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:29:24,036 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:29:25,071 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:32:36,198 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:32:37,643 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:35:05,945 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:35:07,404 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:41:36,494 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.
+2023-09-05 11:41:37,787 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:49:33,702 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\news\templatetags\custom_filters.py changed, reloading.
+2023-09-05 11:49:35,089 INFO autoreload Watching for file changes with StatReloader
+2023-09-05 11:58:47,157 INFO autoreload C:\Users\user\PycharmProjects\pyPjNewsPaper\NewsPaper\NewsPaper\settings.py changed, reloading.

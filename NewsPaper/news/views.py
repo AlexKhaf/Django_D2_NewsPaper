@@ -13,6 +13,7 @@ from django.template.loader import render_to_string
 from datetime import datetime, timedelta
 from django.views.decorators.cache import cache_page
 from django.core.cache import cache
+import logging
 
 
 @login_required
@@ -27,6 +28,15 @@ def upgrade_me(request):
         authorlist.append(author.authorUser)
     if request.user not in authorlist:
         Author.objects.create(authorUser = request.user)
+
+    # logger = logging.getLogger(__name__)
+    # logger.debug("Hello! I'm debug in your app. Enjoy:)")
+    # logger.info("Hello! I'm INFO in your app. Enjoy:)")
+    # logger.warning("Hello! I'm WARNING in your app. Enjoy:)")
+    # logger.error("Hello! I'm error in your app. Enjoy:)")
+    # logger.critical("Hello! I'm critical in your app. Enjoy:)")
+    #
+    # boom = 1 / 0
 
     return redirect('/news/')
 

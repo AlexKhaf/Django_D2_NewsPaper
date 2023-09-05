@@ -1,0 +1,23 @@
+2023-09-05 11:03:28,518 ERROR Internal Server Error: /news/upgrade/ C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\utils\log.py (<class 'ZeroDivisionError'>, ZeroDivisionError('division by zero'), <traceback object at 0x0000000005C6ADC0>)
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\newspaper\news\views.py", line 39, in upgrade_me
+    boom = 1 / 0
+ZeroDivisionError: division by zero
+2023-09-05 11:35:26,076 ERROR Internal Server Error: /news/upgrade/ C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\utils\log.py (<class 'ZeroDivisionError'>, ZeroDivisionError('division by zero'), <traceback object at 0x00000000057EAFC0>)
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\contrib\auth\decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\user\PycharmProjects\pyPjNewsPaper\newspaper\news\views.py", line 39, in upgrade_me
+    boom = 1 / 0
+ZeroDivisionError: division by zero
+2023-09-05 11:35:26,894 ERROR "GET /news/upgrade/ HTTP/1.1" 500 77044 C:\Users\user\PycharmProjects\pyPjNewsPaper\venv\lib\site-packages\django\core\servers\basehttp.py None
